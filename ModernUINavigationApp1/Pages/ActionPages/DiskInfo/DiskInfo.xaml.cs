@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using ModernUINavigationApp1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUINavigationApp1.Pages.ActionPages
+namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfo
 {
     /// <summary>
     /// Interaction logic for DiskInfo.xaml
@@ -21,12 +23,23 @@ namespace ModernUINavigationApp1.Pages.ActionPages
     public partial class DiskInfo : UserControl
     {
         private Frame _navigationService;
-
         public DiskInfo(Frame navigationService)
         {
             InitializeComponent();
             _navigationService = navigationService;
+            this.DataContext = new DiskInfoViewModel();
         }
 
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            if (_navigationService.CanGoBack)
+            {
+                _navigationService.GoBack();
+            }
+            else
+            {
+                ModernDialog.ShowMessage("No entries in back navigation history.", "navigate", MessageBoxButton.OK);
+            }
+        }
     }
 }

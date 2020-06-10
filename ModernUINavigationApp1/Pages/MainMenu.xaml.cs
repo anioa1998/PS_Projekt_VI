@@ -1,7 +1,5 @@
-﻿using FirstFloor.ModernUI.Windows.Controls;
-using ModernUINavigationApp1.Assets;
-using ModernUINavigationApp1.Pages.ActionPages;
-using System;
+﻿using ModernUINavigationApp1.Pages.ActionPages;
+using ModernUINavigationApp1.Pages.ActionPages.DiskInfo;
 using System.Windows;
 using System.Windows.Controls;
 
