@@ -57,7 +57,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pages\ActionPages\DiskInfo\DiskInfo.xaml.cs">
+    <Compile Include="Model\DiskInfoObject.cs" />
+    <Compile Include="Pages\ActionPages\DiskInfo.xaml.cs">
       <DependentUpon>DiskInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\DiskInfoViewModel.cs" />
@@ -69,7 +70,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ActionPages\DiskInfo\DiskInfo.xaml">
+    <Page Include="Pages\ActionPages\DiskInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,9 +159,7 @@
     <Content Include="Assets\motherboard.png" />
     <Content Include="Assets\return.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

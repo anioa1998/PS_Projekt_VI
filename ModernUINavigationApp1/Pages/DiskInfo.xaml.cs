@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfo
+namespace ModernUINavigationApp1.Pages
 {
     /// <summary>
     /// Interaction logic for DiskInfo.xaml
