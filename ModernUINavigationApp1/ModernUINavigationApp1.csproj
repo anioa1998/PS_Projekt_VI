@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,11 +58,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Model\DiskInfoObject.cs" />
     <Compile Include="Pages\ActionPages\DiskInfo.xaml.cs">
       <DependentUpon>DiskInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\DiskInfoViewModel.cs" />
+    <Compile Include="Pages\ActionPages\DiskInfoPages\Disk.xaml.cs">
+      <DependentUpon>Disk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ActionPages\DiskInfoPages\LogicalDisk.xaml.cs">
+      <DependentUpon>LogicalDisk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ActionPages\DiskInfoPages\Partition.xaml.cs">
+      <DependentUpon>Partition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ConnectionService.cs" />
+    <Compile Include="ViewModel\DiskViewModel.cs" />
     <Page Include="Pages\ActionPages\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +83,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ActionPages\DiskInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ActionPages\DiskInfoPages\Disk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ActionPages\DiskInfoPages\LogicalDisk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ActionPages\DiskInfoPages\Partition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +182,7 @@
     <Content Include="Assets\help.png" />
     <Content Include="Assets\motherboard.png" />
     <Content Include="Assets\return.png" />
+    <Content Include="Win32_DiskInfo_CPP.dll" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,8 @@
-﻿using ModernUINavigationApp1.Pages.ActionPages;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using ModernUINavigationApp1.Pages.ActionPages;
+using ModernUINavigationApp1.Services;
+using System.IO.Pipes;
+using System.Management;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,17 +14,29 @@ namespace ModernUINavigationApp1.Pages
     public partial class MainMenu : UserControl
     {
         private Frame _navigationService;
+        private ConnectionService _connectionService;
+        private ConnectionOptions _options;
+        private ManagementScope _scope;
+
         public MainMenu(Frame navigationService)
         {
             InitializeComponent();
             _navigationService = navigationService;
+            try
+            {
+                SetConnectionService();
+            }
+            catch
+            {
+                ModernDialog.ShowMessage("Unable to connect CIM", "ConnectionService Error", MessageBoxButton.OK);
+            }
         }
 
 
 
         private void btnDiskInfo_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new DiskInfo(_navigationService));
+            _navigationService.Navigate(new DiskInfo(_navigationService, _scope, _connectionService));
 
         }
 
@@ -47,6 +63,17 @@ namespace ModernUINavigationApp1.Pages
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             _navigationService.Navigate(new Help(_navigationService));
+        }
+
+        private void SetConnectionService()
+        {
+            _connectionService = new ConnectionService();
+
+            _options = new ConnectionOptions();
+            _options.Impersonation = _connectionService.SetImpersonationLevel();
+
+            _scope = _connectionService.GetCIMConnection(_options);
+            _scope.Connect();
         }
     }
 }

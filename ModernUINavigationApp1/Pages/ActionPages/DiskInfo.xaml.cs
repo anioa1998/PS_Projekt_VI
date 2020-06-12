@@ -1,8 +1,11 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages;
+using ModernUINavigationApp1.Services;
 using ModernUINavigationApp1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,12 +25,17 @@ namespace ModernUINavigationApp1.Pages.ActionPages
     /// </summary>
     public partial class DiskInfo : UserControl
     {
-        private Frame _navigationService;
-        public DiskInfo(Frame navigationService)
+        private Frame _navigationService { get; set; }
+        private DiskViewModel _dataContext { get; set; }
+        private ManagementScope _scope { get; set; }
+        private ConnectionService _connectionService { get; set; }
+        public DiskInfo(Frame navigationService, ManagementScope scope, ConnectionService connectionService) 
         {
             InitializeComponent();
             _navigationService = navigationService;
-            this.DataContext = new DiskInfoViewModel();
+            _scope = scope;
+            _connectionService = connectionService;
+            //_dataContext = new DiskInfoViewModel(scope, connectionService);
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
@@ -40,6 +48,21 @@ namespace ModernUINavigationApp1.Pages.ActionPages
             {
                 ModernDialog.ShowMessage("No entries in back navigation history.", "navigate", MessageBoxButton.OK);
             }
+        }
+
+        private void btnDisk_Click(object sender, RoutedEventArgs e)
+        {
+            _navigationService.Navigate(new Disk(_navigationService, _scope, _connectionService));
+        }
+
+        private void btnPartition_Click(object sender, RoutedEventArgs e)
+        {
+           // _navigationService.Navigate(new Partition(_navigationService, _dataContext));
+        }
+
+        private void btnLogicalDisk_Click(object sender, RoutedEventArgs e)
+        {
+            //_navigationService.Navigate(new LogicalDisk(_navigationService, _dataContext));
         }
     }
 }
