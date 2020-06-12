@@ -21,7 +21,7 @@
             <TextBlock FontFamily="Segoe UI Light" Text="Logical Disk"></TextBlock>
         </Viewbox>
         <Viewbox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="Select physical disk"></TextBlock>
+            <TextBlock FontFamily="Segoe UI Light" Text="Select partition name"></TextBlock>
         </Viewbox>
         <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
             <Button x:Name="btnReturn" Click="btnReturn_Click">
@@ -31,7 +31,7 @@
             </Button>
         </Viewbox>
         <Viewbox Grid.Column="0" Grid.Row="3" VerticalAlignment="Top">
-            <ListView x:Name="lstViewSerial" ItemsSource="{Binding SerialNumbers}">
+            <ListView x:Name="lstViewNames" ItemsSource="{Binding PartitionNames}">
                 <ListView.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFBDE0F3" Offset="0"/>

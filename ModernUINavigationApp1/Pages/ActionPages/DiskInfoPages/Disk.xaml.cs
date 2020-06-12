@@ -15,11 +15,11 @@ namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages
     {
         private Frame _navigationService;
         private DiskViewModel _dataContext;
-        public Disk(Frame navigationService, ManagementScope scope, ConnectionService connectionService)
+        public Disk(Frame navigationService, ConnectionService connectionService)
         {
             InitializeComponent();
             _navigationService = navigationService;
-            _dataContext = new DiskViewModel(scope, connectionService); //to use methods in DiskInfoViewModel outside
+            _dataContext = new DiskViewModel(connectionService); //to use methods in DiskInfoViewModel outside
             DataContext = _dataContext;
 
         }
@@ -39,7 +39,7 @@ namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages
         {
             string selected = (string)lstViewNames.SelectedItem;
             _dataContext.SetData(selected);
-            DiskDataLV.ItemsSource = _dataContext.DiskData;
+            diskDataLV.ItemsSource = _dataContext.DiskData;
 
         }
     }

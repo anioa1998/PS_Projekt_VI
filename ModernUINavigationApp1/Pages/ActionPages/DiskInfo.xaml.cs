@@ -52,12 +52,12 @@ namespace ModernUINavigationApp1.Pages.ActionPages
 
         private void btnDisk_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new Disk(_navigationService, _scope, _connectionService));
+            _navigationService.Navigate(new Disk(_navigationService, _connectionService));
         }
 
         private void btnPartition_Click(object sender, RoutedEventArgs e)
         {
-           // _navigationService.Navigate(new Partition(_navigationService, _dataContext));
+             _navigationService.Navigate(new Partition(_navigationService, _connectionService));
         }
 
         private void btnLogicalDisk_Click(object sender, RoutedEventArgs e)

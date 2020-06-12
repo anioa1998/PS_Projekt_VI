@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using ModernUINavigationApp1.Services;
 using ModernUINavigationApp1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,13 @@ namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages
     public partial class Partition : UserControl
     {
         private Frame _navigationService;
-        public Partition(Frame navigationService, DiskViewModel dataContext)
+        private PartitionViewModel _dataContext;
+        public Partition(Frame navigationService, ConnectionService connectionService)
         {
             InitializeComponent();
             _navigationService = navigationService;
-            this.DataContext = dataContext;
+            _dataContext = new PartitionViewModel(connectionService);
+            DataContext = _dataContext;
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -39,6 +42,13 @@ namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages
             {
                 ModernDialog.ShowMessage("No entries in back navigation history.", "navigate", MessageBoxButton.OK);
             }
+        }
+
+        private void lstViewNames_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            string selected = (string)lstViewNames.SelectedItem;
+            _dataContext.SetData(selected);
+            partitionDataLV.ItemsSource = _dataContext.PartitionData;
         }
     }
 }

@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="ViewModel\DiskViewModel.cs" />
+    <Compile Include="ViewModel\PartitionViewModel.cs" />
     <Page Include="Pages\ActionPages\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
