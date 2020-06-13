@@ -62,7 +62,7 @@ namespace ModernUINavigationApp1.Pages.ActionPages
 
         private void btnLogicalDisk_Click(object sender, RoutedEventArgs e)
         {
-            //_navigationService.Navigate(new LogicalDisk(_navigationService, _dataContext));
+            _navigationService.Navigate(new LogicalDisk(_navigationService, _connectionService));
         }
     }
 }

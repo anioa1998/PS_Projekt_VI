@@ -21,7 +21,7 @@
             <TextBlock FontFamily="Segoe UI Light" Text="Partition"></TextBlock>
         </Viewbox>
         <Viewbox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="Select physical disk"></TextBlock>
+            <TextBlock FontFamily="Segoe UI Light" Text="Select partition"></TextBlock>
         </Viewbox>
         <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
             <Button x:Name="btnReturn" Click="btnReturn_Click">
@@ -45,9 +45,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Viewbox>
-        <Viewbox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
-            <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="217" Grid.Row="2" VerticalAlignment="Top" Width="3" Grid.RowSpan="2"/>
         </Viewbox>
 
         <Viewbox Grid.Column="1" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="Uniform">
