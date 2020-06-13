@@ -1,5 +1,6 @@
 ﻿using FirstFloor.ModernUI.Presentation;
 using ModernUINavigationApp1.Model;
+using ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages;
 using ModernUINavigationApp1.Services;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 
 namespace ModernUINavigationApp1.ViewModel
 {
@@ -75,8 +77,18 @@ namespace ModernUINavigationApp1.ViewModel
             string serialNumber = _nameToSerial.Where(x => x.Key == diskName)
                                                .Select(x => x.Value)
                                                .Single();
-            string query = "SELECT * FROM Win32_DiskDrive WHERE SerialNumber LIKE '%" + serialNumber + "%'";
+
+            Thread getInfoThread = new Thread(() => GetInfoAboutDisk(diskInfoObjects, serialNumber));
+
+            getInfoThread.Start();
+
+        }
+
+        public void GetInfoAboutDisk(List<DiskInfoObject> diskInfoObjects, string serialNumber)
+        {
             StringBuilder str = new StringBuilder(2048);
+            string query = "SELECT * FROM Win32_DiskDrive WHERE SerialNumber LIKE '%" + serialNumber + "%'";
+
             ShowDiskInfo(query, 2048, str);
 
             string dataToSplit = str.ToString();
