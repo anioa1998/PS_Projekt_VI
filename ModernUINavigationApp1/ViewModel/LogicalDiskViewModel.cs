@@ -53,7 +53,7 @@ namespace ModernUINavigationApp1.ViewModel
                     infoObjects.Add(new DiskInfoObject() { Name = "Description: ", Value = logicalDiskData["Description"].ToString() });
                     infoObjects.Add(new DiskInfoObject() { Name = "Size: ", Value = logicalDiskData["Size"].ToString().ToGB() });
                     infoObjects.Add(new DiskInfoObject() { Name = "File system: ", Value = logicalDiskData["FileSystem"].ToString() });
-                    infoObjects.Add(new DiskInfoObject() { Name = "Free space: ", Value = logicalDiskData["FreeSpace"].ToString() });
+                    infoObjects.Add(new DiskInfoObject() { Name = "Free space: ", Value = logicalDiskData["FreeSpace"].ToString().ToGB() });
                     infoObjects.Add(new DiskInfoObject() { Name = "Volume name: ", Value = logicalDiskData["VolumeName"].ToString() });
                     infoObjects.Add(new DiskInfoObject() { Name = "Serial number: ", Value = logicalDiskData["VolumeSerialNumber"].ToString() });
 
