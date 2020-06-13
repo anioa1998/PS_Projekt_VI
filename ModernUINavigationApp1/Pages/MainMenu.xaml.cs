@@ -47,7 +47,7 @@ namespace ModernUINavigationApp1.Pages
 
         private void btnFormat_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new Format(_navigationService));
+            _navigationService.Navigate(new Format(_navigationService, _connectionService));
         }
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)

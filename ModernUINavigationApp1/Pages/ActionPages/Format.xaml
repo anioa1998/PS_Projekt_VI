@@ -7,11 +7,67 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <ScrollViewer>
-            <StackPanel MinWidth="200">
-                <TextBlock Text="BASIC PAGE" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
-            </StackPanel>
-        </ScrollViewer>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/> 
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="Format partition"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+            <Button x:Name="btnReturn" Click="btnReturn_Click">
+                <StackPanel>
+                    <Image Source="/Assets/return.png" />
+                </StackPanel>
+            </Button>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock FontFamily="Segoe UI Light" Text="Select partition letter"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ComboBox x:Name="cmbBoxLetter" ItemsSource="{Binding LogicalDiskNames}" FontFamily="Segoe UI Light"></ComboBox>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="7" VerticalAlignment="Center">
+            <TextBlock FontFamily="Segoe UI Light" Text="Select file system"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ComboBox x:Name="cmbBoxSystem" ItemsSource="{Binding FileSystems}" FontFamily="Segoe UI Light"></ComboBox>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="10" VerticalAlignment="Center">
+            <TextBlock FontFamily="Segoe UI Light" Text="Set partition name"></TextBlock>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ProgressBar x:Name="progBarFormat" Minimum="0" Maximum="100"></ProgressBar>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox x:Name="txtName" Text="(Set partition name here)" FontFamily="Segoe UI Light"></TextBox>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnFormat" FontFamily="Segoe UI" Content="Format" Background="#FF1C8ADB" Foreground="White" FontSize="20" Click="btnFormat_Click"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="txtBlockEnd" Text="Partition formatted successfully. Have a good day." Visibility="Hidden"  FontFamily="Segoe UI Light"></TextBlock>
+        </Viewbox>
+
     </Grid>
 </UserControl>
