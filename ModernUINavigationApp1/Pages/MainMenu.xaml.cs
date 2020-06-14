@@ -21,6 +21,19 @@ namespace ModernUINavigationApp1.Pages
         private ManagementScope _scope;
 
 
+        public MainMenu (Frame navigationService)
+        {
+            InitializeComponent();
+            _navigationService = navigationService;
+            try 
+            {
+                SetConnectionService();
+            }
+            catch (Exception e)
+            {
+                ModernDialog.ShowMessage("Unable to connect CIM\n" + e, "ConnectionService Error", MessageBoxButton.OK);
+            }
+        }
         public MainMenu(Frame navigationService, string computerName,string userName, string Password)
         {
             InitializeComponent();
@@ -31,7 +44,7 @@ namespace ModernUINavigationApp1.Pages
             }
             catch (Exception e)
             {
-                ModernDialog.ShowMessage("Unable to connect CIM", "ConnectionService Error" + e, MessageBoxButton.OK);
+                ModernDialog.ShowMessage("Unable to connect CIM\n" + e, "ConnectionService Error", MessageBoxButton.OK);
             }
         }
 
@@ -66,6 +79,17 @@ namespace ModernUINavigationApp1.Pages
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
             _navigationService.Navigate(new Help(_navigationService));
+        }
+
+        private void SetConnectionService()
+        {
+            _connectionService = new ConnectionService();
+
+            _options = new ConnectionOptions();
+            _options.Impersonation = _connectionService.SetImpersonationLevel();
+
+            _scope = _connectionService.GetCIMConnection(_options);
+            _scope.Connect();
         }
 
         private void SetConnectionService(string computerName,string userName,string password)

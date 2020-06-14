@@ -35,10 +35,7 @@ namespace ModernUINavigationApp1.Pages
             }
             else if((bool)rbtnLocal.IsChecked)
             {
-                string userName = Environment.UserName;
-                string Password = "";
-                string computerName = Environment.MachineName;
-                _navigationService.Navigate(new MainMenu(_navigationService,computerName,userName,Password));
+                _navigationService.Navigate(new MainMenu(_navigationService));
             }
         }
 

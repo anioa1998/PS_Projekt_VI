@@ -17,14 +17,28 @@ namespace ModernUINavigationApp1.Services
             this.scope = scope;
         }
 
+        public ImpersonationLevel SetImpersonationLevel()
+        {
+            return ImpersonationLevel.Impersonate;
+        }
+        public ManagementScope GetCIMConnection(ConnectionOptions options)
+        {
+            string computerName = Environment.MachineName;
+            return Connect(computerName, options);
+
+        }
         public ManagementScope GetCIMConnection(string computerName, ConnectionOptions options)
+        {
+            return Connect(computerName, options);
+        }
+        
+        private ManagementScope Connect(string computerName, ConnectionOptions options)
         {
             if (computerName == null || computerName == "/0")
                 throw new Exception("CIM Connection failed");
             Console.WriteLine("Your computer name: {0}\n", computerName);
             return new ManagementScope($"\\\\{computerName}\\root\\cimv2", options);
         }
-
         public ManagementObjectCollection GetQueryCollectionFromWin32Class(string ClassName)
         {
             query = new ObjectQuery($"SELECT * FROM {ClassName}");
