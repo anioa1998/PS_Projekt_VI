@@ -76,7 +76,7 @@ namespace ModernUINavigationApp1.Pages
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new CheckDisk(_navigationService));
+            _navigationService.Navigate(new CheckDisk(_navigationService, _connectionService));
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
