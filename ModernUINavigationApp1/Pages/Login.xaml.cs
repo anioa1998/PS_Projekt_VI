@@ -1,18 +1,6 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ModernUINavigationApp1.Pages
 {
@@ -22,9 +10,11 @@ namespace ModernUINavigationApp1.Pages
     public partial class Login : UserControl
     {
         private Frame _navigationService;
-        public Login(Frame navigationService)
+        private string _computerName;
+        public Login(Frame navigationService, string computerName)
         {
             InitializeComponent();
+            _computerName = computerName;
             _navigationService = navigationService;
         }
 
@@ -42,7 +32,10 @@ namespace ModernUINavigationApp1.Pages
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new MainMenu(_navigationService));
+            string username = txtLogin.Text;
+            string password = txtPassword.Password;
+
+            _navigationService.Navigate(new MainMenu(_navigationService,_computerName,username,password));
         }
     }
 }

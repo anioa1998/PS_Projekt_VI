@@ -1,8 +1,10 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
 using ModernUINavigationApp1.Pages.ActionPages;
 using ModernUINavigationApp1.Services;
+using System;
 using System.IO.Pipes;
 using System.Management;
+using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,17 +20,18 @@ namespace ModernUINavigationApp1.Pages
         private ConnectionOptions _options;
         private ManagementScope _scope;
 
-        public MainMenu(Frame navigationService)
+
+        public MainMenu(Frame navigationService, string computerName,string userName, string Password)
         {
             InitializeComponent();
             _navigationService = navigationService;
             try
             {
-                SetConnectionService();
+                SetConnectionService(computerName,userName,Password);
             }
-            catch
+            catch (Exception e)
             {
-                ModernDialog.ShowMessage("Unable to connect CIM", "ConnectionService Error", MessageBoxButton.OK);
+                ModernDialog.ShowMessage("Unable to connect CIM", "ConnectionService Error" + e, MessageBoxButton.OK);
             }
         }
 
@@ -65,14 +68,17 @@ namespace ModernUINavigationApp1.Pages
             _navigationService.Navigate(new Help(_navigationService));
         }
 
-        private void SetConnectionService()
+        private void SetConnectionService(string computerName,string userName,string password)
         {
+
             _connectionService = new ConnectionService();
-
             _options = new ConnectionOptions();
-            _options.Impersonation = _connectionService.SetImpersonationLevel();
+            _options.Impersonation = System.Management.ImpersonationLevel.Impersonate;
 
-            _scope = _connectionService.GetCIMConnection(_options);
+            _options.Username = userName;
+            _options.Authority = "NTLMDOMAIN:" + "KOTEG";
+
+            _scope = _connectionService.GetCIMConnection(computerName,_options);
             _scope.Connect();
         }
     }

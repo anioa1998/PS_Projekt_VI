@@ -31,11 +31,14 @@ namespace ModernUINavigationApp1.Pages
         {
             if((bool)rbtnRemote.IsChecked)
             {
-                _navigationService.Navigate(new Login(_navigationService));
+                _navigationService.Navigate(new Login(_navigationService,txtName.Text));
             }
             else if((bool)rbtnLocal.IsChecked)
             {
-                _navigationService.Navigate(new MainMenu(_navigationService));
+                string userName = Environment.UserName;
+                string Password = "";
+                string computerName = Environment.MachineName;
+                _navigationService.Navigate(new MainMenu(_navigationService,computerName,userName,Password));
             }
         }
 

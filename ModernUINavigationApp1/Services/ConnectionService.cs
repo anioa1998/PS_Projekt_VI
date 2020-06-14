@@ -17,14 +17,8 @@ namespace ModernUINavigationApp1.Services
             this.scope = scope;
         }
 
-        public ImpersonationLevel SetImpersonationLevel()
+        public ManagementScope GetCIMConnection(string computerName, ConnectionOptions options)
         {
-            return ImpersonationLevel.Impersonate;
-        }
-
-        public ManagementScope GetCIMConnection(ConnectionOptions options)
-        {
-            string computerName = Environment.MachineName;
             if (computerName == null || computerName == "/0")
                 throw new Exception("CIM Connection failed");
             Console.WriteLine("Your computer name: {0}\n", computerName);
