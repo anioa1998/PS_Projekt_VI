@@ -5,6 +5,7 @@ using System;
 using System.IO.Pipes;
 using System.Management;
 using System.Security;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,6 +20,7 @@ namespace ModernUINavigationApp1.Pages
         private ConnectionService _connectionService;
         private ConnectionOptions _options;
         private ManagementScope _scope;
+        private NetworkComputerService _networkService;
 
 
         public MainMenu (Frame navigationService)
@@ -26,7 +28,7 @@ namespace ModernUINavigationApp1.Pages
             Initializing(navigationService);
             try 
             {
-                SetConnectionService();
+                SetConnectionService();                
             }
             catch (Exception e)
             {
@@ -90,12 +92,16 @@ namespace ModernUINavigationApp1.Pages
         private void SetConnectionService()
         {
             _connectionService = new ConnectionService();
+            _networkService = new NetworkComputerService();
 
             _options = new ConnectionOptions();
             _options.Impersonation = _connectionService.SetImpersonationLevel();
 
             _scope = _connectionService.GetCIMConnection(_options);
             _scope.Connect();
+
+            Thread myThread = new Thread(() => _networkService.scan("192.168.1"));
+            myThread.Start();
         }
 
         private void SetConnectionService(string computerName,string userName,string password)
@@ -103,13 +109,23 @@ namespace ModernUINavigationApp1.Pages
 
             _connectionService = new ConnectionService();
             _options = new ConnectionOptions();
-            _options.Impersonation = System.Management.ImpersonationLevel.Impersonate;
+            _options.Impersonation = _connectionService.SetImpersonationLevel();
 
+            SecureString securepassword = new SecureString();
+            foreach (char c in password)
+            {
+                securepassword.AppendChar(c);
+            }
+
+            _options.SecurePassword = securepassword;
             _options.Username = userName;
-            _options.Authority = "NTLMDOMAIN:" + "KOTEG";
+           // _options.Authority = "NTLMDOMAIN:" + "KOTEG";
 
             _scope = _connectionService.GetCIMConnection(computerName,_options);
             _scope.Connect();
+
+            
+
         }
     }
 }
