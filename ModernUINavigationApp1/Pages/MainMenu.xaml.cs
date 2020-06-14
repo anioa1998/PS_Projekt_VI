@@ -23,32 +23,38 @@ namespace ModernUINavigationApp1.Pages
 
         public MainMenu (Frame navigationService)
         {
-            InitializeComponent();
-            _navigationService = navigationService;
+            Initializing(navigationService);
             try 
             {
                 SetConnectionService();
             }
             catch (Exception e)
             {
-                ModernDialog.ShowMessage("Unable to connect CIM\n" + e, "ConnectionService Error", MessageBoxButton.OK);
+                ExceptionDialog(e);
             }
         }
-        public MainMenu(Frame navigationService, string computerName,string userName, string Password)
+        public MainMenu(Frame navigationService, string computerName, string userName, string Password)
         {
-            InitializeComponent();
-            _navigationService = navigationService;
+            Initializing(navigationService);
             try
             {
                 SetConnectionService(computerName,userName,Password);
             }
             catch (Exception e)
             {
-                ModernDialog.ShowMessage("Unable to connect CIM\n" + e, "ConnectionService Error", MessageBoxButton.OK);
+                ExceptionDialog(e);
             }
         }
 
-
+        private void Initializing(Frame navigationService)
+        {
+            InitializeComponent();
+            _navigationService = navigationService;
+        }
+        private void ExceptionDialog(Exception e)
+        {
+             ModernDialog.ShowMessage("Unable to connect CIM\n" + e, "ConnectionService Error", MessageBoxButton.OK);
+        }
 
         private void btnDiskInfo_Click(object sender, RoutedEventArgs e)
         {
