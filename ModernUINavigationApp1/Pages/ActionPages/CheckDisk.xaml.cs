@@ -36,7 +36,7 @@ namespace ModernUINavigationApp1.Pages.ActionPages
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
             txtResult.Text = "";
-            if (!string.IsNullOrEmpty(cboxLogicalDisk.SelectedItem.ToString())
+            if (!string.IsNullOrEmpty(cboxLogicalDisk.SelectedItem.ToString()))
             {
                 txtResult.Text = _dataContext.ReturnStatus(cboxLogicalDisk.SelectedItem.ToString());
             }

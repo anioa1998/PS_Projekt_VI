@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ModernUINavigationApp1.Pages.ActionPages
@@ -18,6 +19,12 @@ namespace ModernUINavigationApp1.Pages.ActionPages
         {
             InitializeComponent();
             _navigationService = navigationService;
+            txtAbout.Text = @"DiskManagerApplication with GUI is a simple application that allows you to get basic information about HDD, SSD 
+or FLASH data and their partitions. It also allows the option of reading SMART properties and repairing the system disk with CheckDisk (also 
+with the option of enabling after restart). It is possible to format the selected partition on a given data storage and search for active hosts
+in our local network.
+
+Authors: Anna Piechowska & Sebastian Franc IP31";
         }
 
         private void btnReturn_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -8,20 +8,19 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="Disk Info"></TextBlock>
+        <Viewbox  Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="About Us"></TextBlock>
         </Viewbox>
-        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+        <Viewbox  Grid.Row="0" HorizontalAlignment="Right">
             <Button x:Name="btnReturn" Click="btnReturn_Click">
                 <StackPanel>
                     <Image Source="/Assets/return.png" />
@@ -29,6 +28,9 @@
             </Button>
         </Viewbox>
 
-        
+        <Viewbox Grid.Row ="1" VerticalAlignment="Center">      
+            <TextBlock  x:Name="txtAbout" FontFamily="Segoe UI Light" Text="" ></TextBlock>
+        </Viewbox>
+
     </Grid>
 </UserControl>
