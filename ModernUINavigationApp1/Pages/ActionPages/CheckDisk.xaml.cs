@@ -28,5 +28,9 @@ namespace ModernUINavigationApp1.Pages.ActionPages
             _navigationService = navigationService;
         }
 
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

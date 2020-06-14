@@ -12,7 +12,7 @@ namespace ModernUINavigationApp1.Services
 {
     public class NetworkComputerService
     {
-        public void scan(string subnet)
+        public List<HostAddresses> scan(string subnet)
         {
             Ping myPing;
             PingReply reply;
@@ -38,6 +38,8 @@ namespace ModernUINavigationApp1.Services
                     catch { }
                 }
             }
+
+            return list;
            
         }
 

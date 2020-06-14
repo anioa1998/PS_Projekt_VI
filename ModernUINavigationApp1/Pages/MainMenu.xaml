@@ -67,7 +67,19 @@
             </Button>
 
         </Viewbox>
+
         <Viewbox Grid.Column="0" Grid.Row="2" >
+
+            <Button x:Name="btnNetwork" Click="btnNetwork_Click">
+                <StackPanel>
+                    <Image Source="/Assets/network.png" Height="80"/>
+                    <TextBlock Text="NETWORK" Height="20" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="2" >
 
             <Button x:Name="btnAbout" Click="btnAbout_Click">
                 <StackPanel>
@@ -77,15 +89,6 @@
             </Button>
 
         </Viewbox>
-        <Viewbox Grid.Column="1" Grid.Row="2" >
-            
-            <Button x:Name="btnHelp" Click="btnHelp_Click">
-                <StackPanel>
-                    <Image Source="/Assets/help.png" Height="80"/>
-                    <TextBlock Text="HELP" Height="20" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
 
-        </Viewbox>
     </Grid>
 </UserControl>

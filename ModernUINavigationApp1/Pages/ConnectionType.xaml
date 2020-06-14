@@ -32,7 +32,7 @@
         <Viewbox Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel>
                 <RadioButton x:Name="rbtnLocal" Content="Local computer" FontFamily="Segoe UI Light" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <RadioButton x:Name="rbtnRemote" Content="Remote computer" FontFamily="Segoe UI Light" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbtnRemote" IsEnabled="False" Content="Remote computer" FontFamily="Segoe UI Light" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </StackPanel>
         </Viewbox>
         <Viewbox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">

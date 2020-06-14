@@ -96,6 +96,9 @@
     <Compile Include="Pages\ActionPages\DiskInfoPages\Partition.xaml.cs">
       <DependentUpon>Partition.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ActionPages\Network.xaml.cs">
+      <DependentUpon>Network.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ConnectionType.xaml.cs">
       <DependentUpon>ConnectionType.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,7 @@
     <Compile Include="ViewModel\DiskViewModel.cs" />
     <Compile Include="ViewModel\FormatViewModel.cs" />
     <Compile Include="ViewModel\LogicalDiskViewModel.cs" />
+    <Compile Include="ViewModel\NetworkViewModel.cs" />
     <Compile Include="ViewModel\PartitionViewModel.cs" />
     <Page Include="Pages\ActionPages\About.xaml">
       <SubType>Designer</SubType>
@@ -136,10 +140,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ActionPages\Help.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,13 +153,14 @@
     <Compile Include="Pages\ActionPages\Format.xaml.cs">
       <DependentUpon>Format.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ActionPages\Help.xaml.cs">
-      <DependentUpon>Help.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ActionPages\Network.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ConnectionType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,7 +224,9 @@
     <Content Include="Assets\harddrive.png" />
     <Content Include="Assets\help.png" />
     <Content Include="Assets\motherboard.png" />
+    <Content Include="Assets\network.png" />
     <Content Include="Assets\return.png" />
+    <Content Include="Win32_CheckDisk_CPP.dll" />
     <Content Include="Win32_DiskInfo_CPP.dll" />
   </ItemGroup>
   <ItemGroup />

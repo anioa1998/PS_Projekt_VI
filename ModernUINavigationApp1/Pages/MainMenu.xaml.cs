@@ -20,7 +20,7 @@ namespace ModernUINavigationApp1.Pages
         private ConnectionService _connectionService;
         private ConnectionOptions _options;
         private ManagementScope _scope;
-        private NetworkComputerService _networkService;
+        
 
 
         public MainMenu (Frame navigationService)
@@ -84,24 +84,20 @@ namespace ModernUINavigationApp1.Pages
             _navigationService.Navigate(new About(_navigationService));
         }
 
-        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        private void btnNetwork_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new Help(_navigationService));
+            _navigationService.Navigate(new Network(_navigationService));
         }
 
         private void SetConnectionService()
         {
             _connectionService = new ConnectionService();
-            _networkService = new NetworkComputerService();
 
             _options = new ConnectionOptions();
             _options.Impersonation = _connectionService.SetImpersonationLevel();
 
             _scope = _connectionService.GetCIMConnection(_options);
             _scope.Connect();
-
-            Thread myThread = new Thread(() => _networkService.scan("192.168.1"));
-            myThread.Start();
         }
 
         private void SetConnectionService(string computerName,string userName,string password)
@@ -127,5 +123,7 @@ namespace ModernUINavigationApp1.Pages
             
 
         }
+
+        
     }
 }

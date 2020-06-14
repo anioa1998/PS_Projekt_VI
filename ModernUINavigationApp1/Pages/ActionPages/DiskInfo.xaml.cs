@@ -26,16 +26,15 @@ namespace ModernUINavigationApp1.Pages.ActionPages
     public partial class DiskInfo : UserControl
     {
         private Frame _navigationService { get; set; }
-        private DiskViewModel _dataContext { get; set; }
-        private ManagementScope _scope { get; set; }
         private ConnectionService _connectionService { get; set; }
+        ManagementScope _scope { get; set; }
         public DiskInfo(Frame navigationService, ManagementScope scope, ConnectionService connectionService) 
         {
             InitializeComponent();
             _navigationService = navigationService;
             _scope = scope;
             _connectionService = connectionService;
-            //_dataContext = new DiskInfoViewModel(scope, connectionService);
+           
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
