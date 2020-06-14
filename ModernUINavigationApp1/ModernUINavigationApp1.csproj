@@ -72,6 +72,12 @@
     <Compile Include="Pages\ActionPages\DiskInfoPages\Partition.xaml.cs">
       <DependentUpon>Partition.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ConnectionType.xaml.cs">
+      <DependentUpon>ConnectionType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="ViewModel\DiskViewModel.cs" />
     <Compile Include="ViewModel\FormatViewModel.cs" />
@@ -129,6 +135,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ConnectionType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

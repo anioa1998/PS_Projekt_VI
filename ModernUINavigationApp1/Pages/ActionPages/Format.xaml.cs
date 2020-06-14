@@ -106,10 +106,7 @@ namespace ModernUINavigationApp1.Pages.ActionPages
 
                                 completed = true;
                             };
-                            watcher.Progress += (sender1, args) =>
-                            {
-                                progBarFormat.Value = args.Current;
-                            };
+                            
 
                             vi.InvokeMethod(watcher, "Format", new object[] { fileSystem, quickFormat, clusterSize, label, enableCompression });
 

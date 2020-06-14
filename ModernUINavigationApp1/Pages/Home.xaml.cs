@@ -23,7 +23,7 @@ namespace ModernUINavigationApp1.Pages
         public Home()
         {
             InitializeComponent();
-            _NavigationFrame.Navigate(new MainMenu(_NavigationFrame));
+            _NavigationFrame.Navigate(new ConnectionType(_NavigationFrame));
         }
 
         

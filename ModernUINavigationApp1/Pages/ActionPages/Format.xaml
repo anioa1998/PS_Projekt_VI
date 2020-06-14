@@ -54,20 +54,17 @@
             <TextBlock FontFamily="Segoe UI Light" Text="Set partition name"></TextBlock>
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ProgressBar x:Name="progBarFormat" Minimum="0" Maximum="100"></ProgressBar>
-        </Viewbox>
-
         <Viewbox Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBox x:Name="txtName" Text="(Set partition name here)" FontFamily="Segoe UI Light"></TextBox>
         </Viewbox>
 
+        <Viewbox Grid.Column="1" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock x:Name="txtBlockEnd" Text="Partition formatted successfully. Have a good day." Visibility="Hidden"  FontFamily="Segoe UI Light"></TextBlock>
+        </Viewbox>
         <Viewbox Grid.Column="1" Grid.Row="13" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="btnFormat" FontFamily="Segoe UI" Content="Format" Background="#FF1C8ADB" Foreground="White" FontSize="20" Click="btnFormat_Click"/>
         </Viewbox>
-        <Viewbox Grid.Column="1" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock x:Name="txtBlockEnd" Text="Partition formatted successfully. Have a good day." Visibility="Hidden"  FontFamily="Segoe UI Light"></TextBlock>
-        </Viewbox>
+
 
     </Grid>
 </UserControl>
