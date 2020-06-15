@@ -84,6 +84,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Model\DiskInfoObject.cs" />
     <Compile Include="Model\HostAddresses.cs" />
+    <Compile Include="Model\SMARTModel.cs" />
     <Compile Include="Pages\ActionPages\DiskInfo.xaml.cs">
       <DependentUpon>DiskInfo.xaml</DependentUpon>
     </Compile>
@@ -105,6 +106,11 @@
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="S.M.A.R.T\DriveData.cs" />
+    <Compile Include="S.M.A.R.T\ISmartBuilder.cs" />
+    <Compile Include="S.M.A.R.T\SmartBuilder.cs" />
+    <Compile Include="S.M.A.R.T\SmartObject.cs" />
+    <Compile Include="S.M.A.R.T\SmartObjectHelper.cs" />
     <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="Services\NetworkComputerService.cs" />
     <Compile Include="ViewModel\CheckDiskViewModel.cs" />
@@ -113,6 +119,7 @@
     <Compile Include="ViewModel\LogicalDiskViewModel.cs" />
     <Compile Include="ViewModel\NetworkViewModel.cs" />
     <Compile Include="ViewModel\PartitionViewModel.cs" />
+    <Compile Include="ViewModel\SMARTViewModel.cs" />
     <Page Include="Pages\ActionPages\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

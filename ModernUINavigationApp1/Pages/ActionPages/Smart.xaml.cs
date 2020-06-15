@@ -1,6 +1,10 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows.Controls;
+using ModernUINavigationApp1.S.M.A.R.T;
+using ModernUINavigationApp1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,12 +25,39 @@ namespace ModernUINavigationApp1.Pages
     public partial class Smart : UserControl
     {
         private Frame _navigationService;
+        private SMARTViewModel _dataContext;
 
-        public Smart(Frame navigationService)
+        public Smart(Frame navigationService, ManagementScope scope)
         {
             InitializeComponent();
             _navigationService = navigationService;
+            _dataContext = new SMARTViewModel();
+
+            ISmartBuilder builder = new SmartBuilder();
+            builder.SetScope(scope)
+                   .SetDriveStorage()
+                   .SetViewModel(_dataContext)
+                   .Build();
+            this.DataContext = _dataContext;
         }
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            if (_navigationService.CanGoBack)
+            {
+                _navigationService.GoBack();
+            }
+            else
+            {
+                ModernDialog.ShowMessage("No entries in back navigation history.", "navigate", MessageBoxButton.OK);
+            }
+        }
+        private void lstViewSerial_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            string selected = (string)lstViewSerial.SelectedItem;
+            _dataContext.SetData(selected);
+            smartDataLV.ItemsSource = _dataContext.SmartData;
+        }
+
 
     }
 }

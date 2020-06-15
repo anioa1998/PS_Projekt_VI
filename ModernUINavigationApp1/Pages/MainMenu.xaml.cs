@@ -66,7 +66,7 @@ namespace ModernUINavigationApp1.Pages
 
         private void btnSmart_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.Navigate(new Smart(_navigationService));
+            _navigationService.Navigate(new Smart(_navigationService, _scope));
         }
 
         private void btnFormat_Click(object sender, RoutedEventArgs e)

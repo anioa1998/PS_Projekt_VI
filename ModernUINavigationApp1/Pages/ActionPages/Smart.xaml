@@ -7,11 +7,117 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <ScrollViewer>
-            <StackPanel MinWidth="200">
-                <TextBlock Text="BASIC PAGE" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
-            </StackPanel>
-        </ScrollViewer>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="S.M.A.R.T."></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="Select serial number"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right">
+            <Button x:Name="btnReturn" Click="btnReturn_Click">
+                <StackPanel>
+                    <Image Source="/Assets/return.png" />
+                </StackPanel>
+            </Button>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="3" VerticalAlignment="Top">
+            <ListView x:Name="lstViewSerial" FontFamily="Segoe UI Light" ItemsSource="{Binding SerialNumbers}" MouseDoubleClick="lstViewSerial_MouseDoubleClick">
+                <ListView.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFBDE0F3" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.408"/>
+                        <GradientStop Color="#FFC6EAFF" Offset="0.114"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="string">
+                        <TextBlock Text="{Binding}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Viewbox>
+
+        <!--<Viewbox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="Attribute name"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="C"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="W"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="T"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="D"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="6" Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="S"></TextBlock>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Left">
+            <TextBlock FontFamily="Segoe UI Light" Text="Hint: C - Current, W - Worst, T - Threshold, D - Data, S - Status"></TextBlock>
+        </Viewbox>-->
+        <Viewbox Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="6" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="Uniform">
+            <ListView  x:Name="smartDataLV" FontFamily="Segoe UI Light">
+                <ListView.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFBDE0F3" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.408"/>
+                        <GradientStop Color="#FFC6EAFF" Offset="0.114"/>
+                    </LinearGradientBrush>
+                </ListView.Background>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="local:SMARTModel"/>
+            </ListView.ItemTemplate>
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Attribute Name" DisplayMemberBinding="{Binding Attribute}"/>
+                    <GridViewColumn Header="Current"  DisplayMemberBinding="{Binding Current}"/>
+                    <GridViewColumn Header="Worst"  DisplayMemberBinding="{Binding Worst}"/>
+                    <GridViewColumn Header="Threshold"  DisplayMemberBinding="{Binding Threshold}"/>
+                    <GridViewColumn Header="Data"  DisplayMemberBinding="{Binding Data}"/>
+                    <GridViewColumn Header="Status"  DisplayMemberBinding="{Binding Status}"/>
+                </GridView>
+            </ListView.View>
+            <!--<ListView.ItemTemplate>
+                    <DataTemplate DataType="local:SMARTModel">
+                        <StackPanel>
+
+                        <Viewbox Grid.Column="1" Grid.Row="3">
+                            <TextBlock VerticalAlignment="Stretch" FontStretch="Condensed" Text="{Binding Attribute}"></TextBlock>
+                        </Viewbox>
+
+                        <TextBlock  Text="{Binding Value}"></TextBlock>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Viewbox>
+
     </Grid>
 </UserControl>
