@@ -50,10 +50,10 @@ namespace ModernUINavigationApp1.ViewModel
 
                     infoObjects.Add(new DiskInfoObject() { Name = "Disk index: ", Value = partitionData["DiskIndex"].ToString() });
                     infoObjects.Add(new DiskInfoObject() { Name = "Size: ", Value = partitionData["Size"].ToString().ToGB() });
-                    infoObjects.Add(new DiskInfoObject() { Name = "Number of blocks: ", Value = partitionData["NumberOfBlocks"].ToString() });
-                    infoObjects.Add(new DiskInfoObject() { Name = "Block size: ", Value = partitionData["BlockSize"].ToString() });
+                    infoObjects.Add(new DiskInfoObject() { Name = "Block No: ", Value = partitionData["NumberOfBlocks"].ToString() });
+                    infoObjects.Add(new DiskInfoObject() { Name = "B. Size: ", Value = partitionData["BlockSize"].ToString() });
                     infoObjects.Add(new DiskInfoObject() { Name = "Type: ", Value = partitionData["Type"].ToString() });
-                    infoObjects.Add(new DiskInfoObject() { Name = "Is it bootable?: ", Value = partitionData["Bootable"].ToString() });
+                    infoObjects.Add(new DiskInfoObject() { Name = "Bootable?: ", Value = partitionData["Bootable"].ToString() });
 
                     _allPartitionData.Add(partitionName, infoObjects);
                 }

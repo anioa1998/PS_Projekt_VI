@@ -54,27 +54,6 @@
             </ListView>
         </Viewbox>
 
-        <!--<Viewbox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="Attribute name"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="C"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="W"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="T"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="D"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="6" Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="S"></TextBlock>
-        </Viewbox>
-        <Viewbox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Left">
-            <TextBlock FontFamily="Segoe UI Light" Text="Hint: C - Current, W - Worst, T - Threshold, D - Data, S - Status"></TextBlock>
-        </Viewbox>-->
         <Viewbox Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="6" VerticalAlignment="Top" HorizontalAlignment="Left" Stretch="Uniform">
             <ListView  x:Name="smartDataLV" FontFamily="Segoe UI Light">
                 <ListView.Background>
@@ -98,19 +77,7 @@
                     <GridViewColumn Header="Status"  DisplayMemberBinding="{Binding Status}"/>
                 </GridView>
             </ListView.View>
-            <!--<ListView.ItemTemplate>
-                    <DataTemplate DataType="local:SMARTModel">
-                        <StackPanel>
-
-                        <Viewbox Grid.Column="1" Grid.Row="3">
-                            <TextBlock VerticalAlignment="Stretch" FontStretch="Condensed" Text="{Binding Attribute}"></TextBlock>
-                        </Viewbox>
-
-                        <TextBlock  Text="{Binding Value}"></TextBlock>
-
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>-->
+          
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

@@ -31,6 +31,7 @@ namespace ModernUINavigationApp1.Pages.ActionPages.DiskInfoPages
             _navigationService = navigationService;
             _dataContext = new PartitionViewModel(connectionService);
             DataContext = _dataContext;
+           
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {

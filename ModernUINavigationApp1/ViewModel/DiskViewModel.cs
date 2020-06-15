@@ -16,7 +16,7 @@ namespace ModernUINavigationApp1.ViewModel
     public class DiskViewModel : NotifyPropertyChanged
     {
 
-        [DllImport(@"C:\Users\SebFra\Desktop\vsdvwrvrgre\PS_Projekt_VI\ModernUINavigationApp1\Win32_DiskInfo_CPP.dll", EntryPoint = "disk_info", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"C:\Users\Ania\source\repos\ModernUINavigationApp1\PS_Projekt_VI\ModernUINavigationApp1\Win32_DiskInfo_CPP.dll", EntryPoint = "disk_info", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ShowDiskInfo(string name, int strlen, StringBuilder str);
 
         private string[] _diskNames;
