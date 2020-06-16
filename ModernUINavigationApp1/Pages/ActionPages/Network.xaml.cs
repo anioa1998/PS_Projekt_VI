@@ -4,6 +4,7 @@ using ModernUINavigationApp1.Services;
 using ModernUINavigationApp1.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -66,6 +67,11 @@ namespace ModernUINavigationApp1.Pages.ActionPages
                     throw CheckException();
                 }
 
+                if(hasSpecialChar(ipOctets))
+                {
+                    throw CheckException();
+                }
+
                 List<HostAddresses> scanResult = _networkService.scan(ipOctets);
                 if (null != scanResult)
                 {
@@ -80,6 +86,17 @@ namespace ModernUINavigationApp1.Pages.ActionPages
         private Exception CheckException()
         {
             return new Exception("Wrong 3 octet definition!\nYour 3 octets should apply schema XXX.XXX.XXX eg. 192.168.1");
+        }
+
+        private bool hasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}-;'<>_,";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
         }
     }
 }
