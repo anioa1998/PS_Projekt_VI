@@ -3,15 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace ModernUINavigationApp1.ViewModel
 {
 
     public class CheckDiskViewModel
     {
-        [DllImport(@"C:\Users\Ania\source\repos\ModernUINavigationApp1\PS_Projekt_VI\ModernUINavigationApp1\Win32_CheckDisk_CPP.dll", EntryPoint = "chkdsk", CallingConvention = CallingConvention.StdCall)]
+        [DllImport(@"Librares/Win32_CheckDisk_CPP.dll", EntryPoint = "chkdsk", CallingConvention = CallingConvention.StdCall)]
         public static extern int CheckDisk([MarshalAs(UnmanagedType.BStr)] string letter);
-
         private string[] _logicalDiskNames;
         private ConnectionService _connectionService { get; set; }
         private ManagementObjectCollection _queryCollection { get; set; }
@@ -63,8 +63,14 @@ namespace ModernUINavigationApp1.ViewModel
         public string ReturnStatus(string diskLetter)
         {
             string convertedLetter = $"\"{diskLetter}\"";
+            int result = 0;
             string query2 = "Win32_LogicalDisk.DeviceID=" + convertedLetter;
-            int result = CheckDisk(query2);
+            var thread = new Thread(() =>
+            {
+                result = CheckDisk(query2);
+            });
+            thread.Start();
+            thread.Join();
             return statusType[result];
         }
     }

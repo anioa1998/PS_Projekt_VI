@@ -20,7 +20,7 @@ namespace ModernUINavigationApp1.Services
             IPHostEntry host;
             List<HostAddresses> list = new List<HostAddresses>();
 
-            for (int i = 1; i < 255; i++)
+            for (int i = 100; i < 110; i++)
             {
                 string subnetn = "." + i.ToString();
                 myPing = new Ping();

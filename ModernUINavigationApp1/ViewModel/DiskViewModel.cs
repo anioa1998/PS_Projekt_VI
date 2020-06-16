@@ -16,12 +16,13 @@ namespace ModernUINavigationApp1.ViewModel
     public class DiskViewModel : NotifyPropertyChanged
     {
 
-        [DllImport(@"C:\Users\Ania\source\repos\ModernUINavigationApp1\PS_Projekt_VI\ModernUINavigationApp1\Win32_DiskInfo_CPP.dll", EntryPoint = "disk_info", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"Librares/Win32_DiskInfo_CPP.dll", EntryPoint = "disk_info", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ShowDiskInfo(string name, int strlen, StringBuilder str);
 
         private string[] _diskNames;
         private Dictionary<string, string> _nameToSerial = new Dictionary<string, string>();
         private Dictionary<string, List<DiskInfoObject>> _allDiskData = new Dictionary<string, List<DiskInfoObject>>();
+        private Thread _getInfoThread;
 
         private DiskInfoObject[] _diskData;
         private ManagementObjectCollection _queryCollection { get; set; }
@@ -78,9 +79,9 @@ namespace ModernUINavigationApp1.ViewModel
                                                .Select(x => x.Value)
                                                .Single();
 
-            Thread getInfoThread = new Thread(() => GetInfoAboutDisk(diskInfoObjects, serialNumber));
+            _getInfoThread = new Thread(() => GetInfoAboutDisk(diskInfoObjects, serialNumber));
 
-            getInfoThread.Start();
+            _getInfoThread.Start();
 
         }
 
@@ -105,6 +106,7 @@ namespace ModernUINavigationApp1.ViewModel
             diskInfoObjects.Add(new DiskInfoObject() { Name = "Firmware: ", Value = values[6] });
 
             _diskData = diskInfoObjects.ToArray();
+            _getInfoThread.Abort();
         }
 
     }
